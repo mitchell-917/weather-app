@@ -10,6 +10,9 @@ function App() {
       <div className="temperature">
         <p>15°C</p> {/* Placeholder for temperature */}
       </div>
+      <div className="description">
+        <p>Cloudy</p> {/* Placeholder for weather description */}
+      </div>
     </div>
   );
 }

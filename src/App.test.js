@@ -9,4 +9,7 @@ test('renders weather app UI elements', () => {
 
   const temperatureElement = screen.getByText('15°C');
   expect(temperatureElement).toBeInTheDocument();
+
+  const descriptionElement = screen.getByText('Cloudy');
+  expect(descriptionElement).toBeInTheDocument();
 });
