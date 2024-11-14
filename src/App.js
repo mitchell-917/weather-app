@@ -7,6 +7,9 @@ function App() {
       <div className="location">
         <h2>City Name</h2> {/* Placeholder for city name */}
       </div>
+      <div className="temperature">
+        <p>15°C</p> {/* Placeholder for temperature */}
+      </div>
     </div>
   );
 }
