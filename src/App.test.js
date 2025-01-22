@@ -4,12 +4,21 @@ import App from './App';
 test('renders weather app UI elements', () => {
   render(<App/>);
 
-  const cityElement = screen.getByRole('heading');
-  expect(cityElement).toHaveTextContent('City Name');
+  const cityElement = screen.getByText('London');
+  expect(cityElement).toBeInTheDocument();
 
-  const temperatureElement = screen.getByText('15°C');
+  const temperatureElement = screen.getByText('20°C');
   expect(temperatureElement).toBeInTheDocument();
 
-  const descriptionElement = screen.getByText('Cloudy');
-  expect(descriptionElement).toBeInTheDocument();
+  const humidityElement = screen.getByText('Humidity');
+  expect(humidityElement).toBeInTheDocument();
+
+  const windSpeedElement = screen.getByText('Wind Speed');
+  expect(windSpeedElement).toBeInTheDocument();
+
+  const humidityElementValue = screen.getByText('20%');
+  expect(humidityElementValue).toBeInTheDocument();
+
+  const windSpeedElementValue = screen.getByText('50 kmh');
+  expect(windSpeedElementValue).toBeInTheDocument();
 });
