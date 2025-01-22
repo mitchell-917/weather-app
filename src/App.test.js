@@ -21,4 +21,7 @@ test('renders weather app UI elements', () => {
 
   const windSpeedElementValue = screen.getByText('50 kmh');
   expect(windSpeedElementValue).toBeInTheDocument();
+
+  const currentWeatherElement = screen.getByTestId('current-weather');
+  expect(currentWeatherElement).toBeInTheDocument();
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import './weather.css';
+import sunnyImg from './sunny-img.png';
 
 export const Weather = () => {
   return (
@@ -9,6 +10,7 @@ export const Weather = () => {
           <input type='text' placeholder='Enter city name'/>
           <button>Search</button>
         </div>
+        <img src={sunnyImg} alt='weather icon' data-testid="current-weather"/>
         <p className='temperature'>20°C</p>
         <p className='city'>London</p>
         <div className='weather-data'>
@@ -30,4 +32,4 @@ export const Weather = () => {
   );
 }
 
-export default Weather;
+export default Weather
