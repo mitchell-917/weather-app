@@ -9,8 +9,8 @@ export const Weather = () => {
           <input type='text' placeholder='Enter city name'/>
           <button>Search</button>
         </div>
-        <p className='city'>London</p>
         <p className='temperature'>20°C</p>
+        <p className='city'>London</p>
         <div className='weather-data'>
           <div className='col'>
             <div>
