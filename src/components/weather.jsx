@@ -4,6 +4,7 @@ import './weather.css';
 const getWeatherIcon = (weather) => {
   if (weather === 'Clear') return '/assets/clear.png';
   if (weather === 'Cloudy') return '/assets/cloud.png';
+  if (weather === 'Rainy') return '/assets/rain.png';
 };
 
 export const Weather = ({ weather }) => {
