@@ -2,13 +2,21 @@ import React from 'react';
 import './weather.css';
 
 const getWeatherIcon = (weather) => {
-  if (weather === 'Clear') return '/assets/clear.png';
-  if (weather === 'Cloudy') return '/assets/cloud.png';
-  if (weather === 'Rainy') return '/assets/rain.png';
-  if (weather === 'Snowy') return '/assets/snow.png';
+  switch (weather) {
+    case 'Clear':
+      return '/assets/clear.png';
+    case 'Cloudy':
+      return '/assets/cloud.png';
+    case 'Rainy':
+      return '/assets/rain.png';
+    case 'Snowy':
+      return '/assets/snow.png';
+    default:
+      return '/assets/clear.png';
+  }
 };
 
-export const Weather = ({ weather = "Clear" }) => {
+export const Weather = ({ weather }) => {
   const weatherIcon = getWeatherIcon(weather);
 
   return (
