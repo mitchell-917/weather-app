@@ -15,40 +15,21 @@ describe('Weather App', () => {
     expect(screen.getByTestId('current-weather')).toBeInTheDocument();
   });
 
-  it('renders sunny weather image', () => {
-    const currentWeather = "Clear";
-    render(<Weather weather={currentWeather}/>);
+  const weatherTestCases = [
+    { weather: 'Clear', expectedSrc: '/assets/clear.png' },
+    { weather: 'Cloudy', expectedSrc: '/assets/cloud.png' },
+    { weather: 'Rainy', expectedSrc: '/assets/rain.png' },
+    { weather: 'Snowy', expectedSrc: '/assets/snow.png' },
+  ];
 
-    const currentWeatherImage = screen.getByTestId('current-weather');
-    expect(currentWeatherImage).toBeInTheDocument();
-    expect(currentWeatherImage.getAttribute('src')).toBe('/assets/clear.png');
-  });
+  weatherTestCases.forEach(({ weather, expectedSrc }) => {
+    test(`renders ${weather.toLowerCase()} weather image`, () => {
+      render(<Weather weather={weather} />);
 
-  xit('renders cloudy weather image', () => {
-    const currentWeather = "Cloudy";
-    render(<Weather weather={currentWeather}/>);
-
-    const currentWeatherImage = screen.getByTestId('current-weather');
-    expect(currentWeatherImage).toBeInTheDocument();
-    expect(currentWeatherImage.getAttribute('src')).toBe('/assets/cloud.png');
-  });
-
-  it('renders rainy weather image', () => {
-    const currentWeather = "Rainy";
-    render(<Weather weather={currentWeather}/>);
-
-    const currentWeatherImage = screen.getByTestId('current-weather');
-    expect(currentWeatherImage).toBeInTheDocument();
-    expect(currentWeatherImage.getAttribute('src')).toBe('/assets/rain.png');
-  });
-
-  it('renders snowy weather image', () => {
-    const currentWeather = "Snowy";
-    render(<Weather weather={currentWeather}/>);
-
-    const currentWeatherImage = screen.getByTestId('current-weather');
-    expect(currentWeatherImage).toBeInTheDocument();
-    expect(currentWeatherImage.getAttribute('src')).toBe('/assets/snow.png');
+      const currentWeatherImage = screen.getByTestId('current-weather');
+      expect(currentWeatherImage).toBeInTheDocument();
+      expect(currentWeatherImage.getAttribute('src')).toBe(expectedSrc);
+    });
   });
 });
 
