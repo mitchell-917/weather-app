@@ -1,8 +1,12 @@
 import React from 'react';
 import './weather.css';
 
+const getWeatherIcon = () => {
+  return '/assets/clear.png';
+};
+
 export const Weather = () => {
-  const sunnyImg = '/assets/clear.png';
+  const weatherIcon = getWeatherIcon();
 
   return (
     <div className='weather'>
@@ -11,7 +15,7 @@ export const Weather = () => {
           <input type='text' placeholder='Enter city name'/>
           <button>Search</button>
         </div>
-        <img src={sunnyImg} alt='weather icon' data-testid="current-weather"/>
+        <img src={weatherIcon} alt='weather icon' data-testid="current-weather"/>
         <p className='temperature'>20°C</p>
         <p className='city'>London</p>
         <div className='weather-data'>
