@@ -26,7 +26,13 @@ test('renders weather app UI elements', () => {
   expect(currentWeatherElement).toBeInTheDocument();
 });
 
-xit('renders sunny weather image', () => {});
+it('renders sunny weather image', () => {
+  render(<App/>);
+
+  const currentWeatherImage = screen.getByTestId('current-weather');
+  expect(currentWeatherImage).toBeInTheDocument();
+});
+
 xit('renders cloudy weather image', () => {});
 xit('renders rainy weather image', () => {});
 xit('renders snowy weather image', () => {});
