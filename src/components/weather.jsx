@@ -1,6 +1,6 @@
 import React from 'react';
 import './weather.css';
-import sunnyImg from './sunny-img.png';
+import sunnyImg from '../assets/clear.png';
 
 export const Weather = () => {
   return (
