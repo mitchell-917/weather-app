@@ -1,8 +1,9 @@
 import React from 'react';
 import './weather.css';
-import sunnyImg from '../assets/clear.png';
 
 export const Weather = () => {
+  const sunnyImg = '/assets/clear.png';
+
   return (
     <div className='weather'>
       <div className='weather-container'>
