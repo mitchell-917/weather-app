@@ -25,3 +25,8 @@ test('renders weather app UI elements', () => {
   const currentWeatherElement = screen.getByTestId('current-weather');
   expect(currentWeatherElement).toBeInTheDocument();
 });
+
+xit('renders sunny weather image', () => {});
+xit('renders cloudy weather image', () => {});
+xit('renders rainy weather image', () => {});
+xit('renders snowy weather image', () => {});
