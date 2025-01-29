@@ -8,7 +8,7 @@ const getWeatherIcon = (weather) => {
   if (weather === 'Snowy') return '/assets/snow.png';
 };
 
-export const Weather = ({ weather }) => {
+export const Weather = ({ weather = "Clear" }) => {
   const weatherIcon = getWeatherIcon(weather);
 
   return (
