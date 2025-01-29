@@ -53,4 +53,12 @@ it('renders rainy weather image', () => {
   expect(currentWeatherImage).toBeInTheDocument();
   expect(currentWeatherImage.getAttribute('src')).toBe('/assets/rain.png');
 });
-xit('renders snowy weather image', () => {});
+
+it('renders snowy weather image', () => {
+  const currentWeather = "Snowy";
+  render(<Weather weather={currentWeather}/>);
+
+  const currentWeatherImage = screen.getByTestId('current-weather');
+  expect(currentWeatherImage).toBeInTheDocument();
+  expect(currentWeatherImage.getAttribute('src')).toBe('/assets/snow.png');
+});
