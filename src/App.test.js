@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Weather from './components/weather.jsx';
 
 test('renders weather app UI elements', () => {
   render(<App/>);
@@ -27,11 +28,12 @@ test('renders weather app UI elements', () => {
 });
 
 it('renders sunny weather image', () => {
-  render(<App/>);
+  const currentWeather = "Clear";
+  render(<Weather weather={currentWeather}/>);
 
   const currentWeatherImage = screen.getByTestId('current-weather');
   expect(currentWeatherImage).toBeInTheDocument();
-  expect(currentWeatherImage).toHaveAttribute('src', '/assets/clear.png');
+  expect(currentWeatherImage.getAttribute('src')).toBe('/assets/clear.png');
 });
 
 xit('renders cloudy weather image', () => {});

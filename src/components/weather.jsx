@@ -2,11 +2,12 @@ import React from 'react';
 import './weather.css';
 
 const getWeatherIcon = (weather) => {
-  return '/assets/clear.png';
+  if (weather === 'Clear') return '/assets/clear.png';
+  if (weather === 'Cloudy') return '/assets/cloud.png';
 };
 
-export const Weather = () => {
-  const weatherIcon = getWeatherIcon("Clear");
+export const Weather = ({ weather }) => {
+  const weatherIcon = getWeatherIcon(weather);
 
   return (
     <div className='weather'>
@@ -37,4 +38,4 @@ export const Weather = () => {
   );
 }
 
-export default Weather
+export default Weather;
