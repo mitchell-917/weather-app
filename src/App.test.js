@@ -31,6 +31,7 @@ it('renders sunny weather image', () => {
 
   const currentWeatherImage = screen.getByTestId('current-weather');
   expect(currentWeatherImage).toBeInTheDocument();
+  expect(currentWeatherImage).toHaveAttribute('src', '/assets/clear.png');
 });
 
 xit('renders cloudy weather image', () => {});
