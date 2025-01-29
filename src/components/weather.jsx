@@ -1,20 +1,15 @@
 import React from 'react';
 import './weather.css';
 
-const getWeatherIcon = (weather) => {
-  switch (weather) {
-    case 'Clear':
-      return '/assets/clear.png';
-    case 'Cloudy':
-      return '/assets/cloud.png';
-    case 'Rainy':
-      return '/assets/rain.png';
-    case 'Snowy':
-      return '/assets/snow.png';
-    default:
-      return '/assets/clear.png';
-  }
+const weatherIcons = {
+  Clear: '/assets/clear.png',
+  Cloudy: '/assets/cloud.png',
+  Rainy: '/assets/rain.png',
+  Snowy: '/assets/snow.png',
+  Default: '/assets/clear.png'
 };
+
+const getWeatherIcon = (weather) => weatherIcons[weather] || weatherIcons.Default;
 
 export const Weather = ({ weather }) => {
   const weatherIcon = getWeatherIcon(weather);
