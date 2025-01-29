@@ -9,11 +9,9 @@ const weatherIcons = {
   Default: '/assets/clear.png'
 };
 
-const getWeatherIcon = (weather) => weatherIcons[weather] || weatherIcons.Default;
+const getWeatherIcon = (currentWeather) => weatherIcons[currentWeather] || weatherIcons.Default;
 
-export const Weather = ({ weather }) => {
-  const weatherIcon = getWeatherIcon(weather);
-
+export const Weather = ({ currentWeather }) => {
   return (
     <div className='weather'>
       <div className='weather-container'>
@@ -21,7 +19,7 @@ export const Weather = ({ weather }) => {
           <input type='text' placeholder='Enter city name'/>
           <button>Search</button>
         </div>
-        <img src={weatherIcon} alt='weather icon' data-testid="current-weather"/>
+        <img src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
         <p className='temperature'>20°C</p>
         <p className='city'>London</p>
         <div className='weather-data'>

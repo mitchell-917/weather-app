@@ -16,15 +16,15 @@ describe('Weather App', () => {
   });
 
   const weatherTestCases = [
-    { weather: 'Clear', expectedSrc: '/assets/clear.png' },
-    { weather: 'Cloudy', expectedSrc: '/assets/cloud.png' },
-    { weather: 'Rainy', expectedSrc: '/assets/rain.png' },
-    { weather: 'Snowy', expectedSrc: '/assets/snow.png' },
+    { currentWeather: 'Clear', expectedSrc: '/assets/clear.png' },
+    { currentWeather: 'Cloudy', expectedSrc: '/assets/cloud.png' },
+    { currentWeather: 'Rainy', expectedSrc: '/assets/rain.png' },
+    { currentWeather: 'Snowy', expectedSrc: '/assets/snow.png' },
   ];
 
-  weatherTestCases.forEach(({ weather, expectedSrc }) => {
-    test(`renders ${weather.toLowerCase()} weather image`, () => {
-      render(<Weather weather={weather} />);
+  weatherTestCases.forEach(({ currentWeather, expectedSrc }) => {
+    test(`renders ${currentWeather.toLowerCase()} weather image`, () => {
+      render(<Weather currentWeather={currentWeather} />);
 
       const currentWeatherImage = screen.getByTestId('current-weather');
       expect(currentWeatherImage).toBeInTheDocument();
