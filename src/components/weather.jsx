@@ -1,12 +1,12 @@
 import React from 'react';
 import './weather.css';
 
-const getWeatherIcon = () => {
+const getWeatherIcon = (weather) => {
   return '/assets/clear.png';
 };
 
 export const Weather = () => {
-  const weatherIcon = getWeatherIcon();
+  const weatherIcon = getWeatherIcon("Clear");
 
   return (
     <div className='weather'>
