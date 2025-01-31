@@ -31,5 +31,13 @@ describe('Weather App', () => {
       expect(currentWeatherImage.getAttribute('src')).toBe(expectedSrc);
     });
   });
+
+  test('renders humidity image', () => {
+    render(<Weather />);
+
+    const humidityImage = screen.getByTestId('current-humidity');
+    expect(humidityImage).toBeInTheDocument();
+    expect(humidityImage.getAttribute('src')).toBe('/assets/humidity.png');
+  });
 });
 
