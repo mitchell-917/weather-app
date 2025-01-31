@@ -32,6 +32,7 @@ export const Weather = ({ currentWeather }) => {
           </div>
           <div className='col'>
             <div>
+              <img src={'/assets/wind.png'} alt='wind icon' data-testid="current-wind"/>
               <p>Wind Speed</p>
               <p>50 kmh</p>
             </div>
