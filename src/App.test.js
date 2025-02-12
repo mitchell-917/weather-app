@@ -32,7 +32,7 @@ describe('Weather App', () => {
     });
   });
 
-  test('renders humidity image', () => {
+  test('it displays the humidity icon', () => {
     render(<Weather />);
 
     const humidityImage = screen.getByTestId('current-humidity');
