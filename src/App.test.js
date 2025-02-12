@@ -9,9 +9,7 @@ describe('Weather App', () => {
     expect(screen.getByText('London')).toBeInTheDocument();
     expect(screen.getByText('20°C')).toBeInTheDocument();
     expect(screen.getByText('Humidity')).toBeInTheDocument();
-    expect(screen.getByText('Wind Speed')).toBeInTheDocument();
     expect(screen.getByText('20%')).toBeInTheDocument();
-    expect(screen.getByText('50 kmh')).toBeInTheDocument();
     expect(screen.getByTestId('current-weather')).toBeInTheDocument();
   });
 
@@ -40,12 +38,14 @@ describe('Weather App', () => {
     expect(humidityImage.getAttribute('src')).toBe('/assets/humidity.png');
   });
 
-  test('renders wind image', () => {
+  test('it displays the wind information', () => {
     render(<Weather />);
 
     const windImage = screen.getByTestId('current-wind');
     expect(windImage).toBeInTheDocument();
     expect(windImage.getAttribute('src')).toBe('/assets/wind.png');
+    expect(screen.getByText('Wind Speed')).toBeInTheDocument();
+    expect(screen.getByText('50 kmh')).toBeInTheDocument();
   });
 });
 
