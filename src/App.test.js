@@ -8,8 +8,6 @@ describe('Weather App', () => {
 
     expect(screen.getByText('London')).toBeInTheDocument();
     expect(screen.getByText('20°C')).toBeInTheDocument();
-    expect(screen.getByText('Humidity')).toBeInTheDocument();
-    expect(screen.getByText('20%')).toBeInTheDocument();
     expect(screen.getByTestId('current-weather')).toBeInTheDocument();
   });
 
@@ -30,12 +28,14 @@ describe('Weather App', () => {
     });
   });
 
-  test('it displays the humidity icon', () => {
+  test('it displays the humidity information', () => {
     render(<Weather />);
 
     const humidityImage = screen.getByTestId('current-humidity');
     expect(humidityImage).toBeInTheDocument();
     expect(humidityImage.getAttribute('src')).toBe('/assets/humidity.png');
+    expect(screen.getByText('Humidity')).toBeInTheDocument();
+    expect(screen.getByText('20%')).toBeInTheDocument();
   });
 
   test('it displays the wind information', () => {
