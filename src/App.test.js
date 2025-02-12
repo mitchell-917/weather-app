@@ -3,8 +3,8 @@ import App from './App';
 import Weather from './components/weather.jsx';
 
 describe('Weather App', () => {
-  test('renders weather app UI elements', () => {
-    render(<App />);
+  test('it displays the weather forecast for a given city', () => {
+    render(<Weather />);
 
     expect(screen.getByText('London')).toBeInTheDocument();
     expect(screen.getByText('20°C')).toBeInTheDocument();
