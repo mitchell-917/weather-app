@@ -1,5 +1,6 @@
 import React from 'react';
 import './weather.css';
+import Search from './search';
 
 const weatherIcons = {
   Clear: '/assets/clear.png',
@@ -15,10 +16,7 @@ export const Weather = ({ currentWeather }) => {
   return (
     <div className='weather'>
       <div className='weather-container'>
-        <div className='search-bar'>
-          <input type='text' placeholder='Enter city name'/>
-          <button>Search</button>
-        </div>
+        <Search />
         <img src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
         <p className='temperature'>20°C</p>
         <p className='city'>London</p>
