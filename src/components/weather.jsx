@@ -1,6 +1,9 @@
 import React from 'react';
 import './weather.css';
 import Search from './search';
+import City from './city';
+import Temperature from './temperature';
+
 
 const weatherIcons = {
   Clear: '/assets/clear.png',
@@ -18,8 +21,7 @@ export const Weather = ({ currentWeather }) => {
       <div className='weather-container'>
         <Search />
         <img src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
-        <p className='temperature'>20°C</p>
-        <p className='city'>London</p>
+        <City />
         <div className='weather-data'>
           <div className='col'>
             <div>
