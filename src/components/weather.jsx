@@ -22,6 +22,7 @@ export const Weather = ({ currentWeather }) => {
         <Search />
         <img src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
         <City />
+        <Temperature />
         <div className='weather-data'>
           <div className='col'>
             <div>
