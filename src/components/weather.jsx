@@ -13,14 +13,10 @@ export const Weather = () => {
         <CurrentWeather />
         <div className='weather-data'>
           <div className='col'>
-            <div>
-              <Humidity />
-            </div>
+            <Humidity />
           </div>
           <div className='col'>
-            <div>
-              <Wind />
-            </div>
+            <Wind />
           </div>
         </div>
       </div>
