@@ -13,10 +13,10 @@ const getWeatherIcon = (currentWeather) => weatherIcons[currentWeather] || weath
 
 export const CurrentWeather = ({ currentWeather }) => {
   return (
-    <div>
-      <img src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
-      <City />
-      <Temperature />
+    <div className="current-weather">
+      <img className="weather-icon" src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
+      <City className="city" />
+      <Temperature className="temperature" />
     </div>
   );
 }
