@@ -3,7 +3,7 @@ export const Wind = () => {
     <div className='col'>
       <div>
         <img src={'/assets/wind.png'} alt='wind icon' data-testid="current-wind"/>
-        <p>Wind Speed</p>
+        <p>Wind</p>
         <p>10 km/h</p>
       </div>
     </div>
