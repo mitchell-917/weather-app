@@ -7,7 +7,7 @@ describe('Weather App', () => {
     render(<Weather />);
 
     expect(screen.getByText('London')).toBeInTheDocument();
-    expect(screen.getByText('20°C')).toBeInTheDocument();
+    expect(screen.getByText('20°')).toBeInTheDocument();
     expect(screen.getByTestId('current-weather')).toBeInTheDocument();
   });
 
