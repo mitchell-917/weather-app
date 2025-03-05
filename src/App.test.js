@@ -45,7 +45,7 @@ describe('Weather App', () => {
     expect(windImage).toBeInTheDocument();
     expect(windImage.getAttribute('src')).toBe('/assets/wind.png');
     expect(screen.getByText('Wind Speed')).toBeInTheDocument();
-    expect(screen.getByText('50 kmh')).toBeInTheDocument();
+    expect(screen.getByText('10 km/h')).toBeInTheDocument();
   });
 });
 

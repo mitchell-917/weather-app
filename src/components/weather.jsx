@@ -4,6 +4,7 @@ import Search from './search';
 import City from './city';
 import Temperature from './temperature';
 import Humidity from './humidity';
+import Wind from './wind';
 
 
 const weatherIcons = {
@@ -25,12 +26,14 @@ export const Weather = ({ currentWeather }) => {
         <City />
         <Temperature />
         <div className='weather-data'>
-          <Humidity />
           <div className='col'>
             <div>
-              <img src={'/assets/wind.png'} alt='wind icon' data-testid="current-wind"/>
-              <p>Wind Speed</p>
-              <p>50 kmh</p>
+              <Humidity />
+            </div>
+          </div>
+          <div className='col'>
+            <div>
+              <Wind />
             </div>
           </div>
         </div>
