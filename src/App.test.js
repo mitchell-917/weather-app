@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
 import Weather from './components/weather.jsx';
+import CurrentWeather from './components/currentWeather.jsx';
 
 describe('Weather App', () => {
   test('it displays the weather forecast for a given city', () => {
@@ -20,7 +20,7 @@ describe('Weather App', () => {
 
   weatherTestCases.forEach(({ currentWeather, expectedSrc }) => {
     test(`renders ${currentWeather.toLowerCase()} weather image`, () => {
-      render(<Weather currentWeather={currentWeather} />);
+      render(<CurrentWeather currentWeather={currentWeather} />);
 
       const currentWeatherImage = screen.getByTestId('current-weather');
       expect(currentWeatherImage).toBeInTheDocument();
