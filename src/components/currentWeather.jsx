@@ -16,7 +16,7 @@ export const CurrentWeather = ({ currentWeather }) => {
     <div className="current-weather">
       <img className="weather-icon" src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
       <City className="city" />
-      <Temperature className="temperature" />
+      <Temperature className="temperature" temperature={20} />
     </div>
   );
 }
