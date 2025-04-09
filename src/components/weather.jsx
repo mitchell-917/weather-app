@@ -7,7 +7,9 @@ import CurrentWeather from './currentWeather';
 import { useEffect } from 'react';
 
 export const Weather = () => {
-  const WeatherData = 20;
+  const WeatherData = {
+    temperature: 20
+  };
 
   const search = async (city) => {
     try {
@@ -32,7 +34,7 @@ export const Weather = () => {
     <div className='weather'>
       <div className='weather-container'>
         <Search />
-        <CurrentWeather temperature={WeatherData || 20}/>
+        <CurrentWeather temperature={WeatherData.temperature || 20}/>
         <div className='weather-data'>
           <div className='col'>
             <Humidity />
