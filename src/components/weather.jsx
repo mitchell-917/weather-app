@@ -16,6 +16,7 @@ export const Weather = () => {
         const apiKey = process.env.REACT_APP_API_KEY;
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
         const data = await response.json();
+        const temperature = data.main.temp - 273.15
 
     } catch (error) {
         console.error('Error fetching weather data:', error);
