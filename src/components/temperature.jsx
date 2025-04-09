@@ -7,8 +7,4 @@ export const Temperature = ({temperature}) => {
   );
 }
 
-Temperature.defaultProps = {
-  temperature: 20,
-};
-
 export default Temperature;
