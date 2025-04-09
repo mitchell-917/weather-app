@@ -1,7 +1,10 @@
+
 export const Temperature = () => {
+  var temperature = 20;
+
   return (
     <div className='temperature'>
-      <p>20°</p>
+      <p>{temperature}°</p>
     </div>
   );
 }
