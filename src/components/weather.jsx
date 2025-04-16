@@ -1,31 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './weather.css';
 import Search from './search';
 import Humidity from './humidity';
 import Wind from './wind';
 import CurrentWeather from './currentWeather';
-import { useEffect } from 'react';
 
 export const Weather = () => {
-  const WeatherData = {
-    temperature: 20
-  };
+  const [temperature, setTemperature] = useState(20);
 
   const search = async (city) => {
     try {
-        const apiKey = process.env.REACT_APP_API_KEY;
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
-        const data = await response.json();
-        const temperature = data.main.temp - 273.15
-
+      const apiKey = process.env.REACT_APP_API_KEY;
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
+      const data = await response.json();
+      const tempInCelsius = data.main.temp - 273.15;
+      setTemperature(tempInCelsius.toFixed(1));
     } catch (error) {
-        console.error('Error fetching weather data:', error);
+      console.error('Error fetching weather data:', error);
     }
   };
 
   useEffect(() => {
     const fetchWeather = async () => {
-      const city = 'London'
+      const city = 'London';
       await search(city);
     };
     fetchWeather();
@@ -35,7 +32,7 @@ export const Weather = () => {
     <div className='weather'>
       <div className='weather-container'>
         <Search />
-        <CurrentWeather temperature={WeatherData.temperature || 20}/>
+        <CurrentWeather temperature={temperature} />
         <div className='weather-data'>
           <div className='col'>
             <Humidity />
@@ -47,6 +44,6 @@ export const Weather = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Weather;
