@@ -131,4 +131,25 @@ describe('Weather App', () => {
       expect(mockOnSearch).not.toHaveBeenCalled();
     });
   });
+
+  describe('Background Color Change', () => {
+    test('it changes the background color based on the time of day', async () => {
+      fetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          main: { temp: 293.15, humidity: 50 },
+          name: 'Paris',
+          weather: [{ icon: '01d' }],
+          wind: { speed: 5 },
+          dt: 1681656000,
+          timezone: 3600,
+        }),
+      });
+
+      render(<Weather />);
+
+      const weatherApp = await screen.findByRole('main');
+      expect(weatherApp).toHaveStyle('background-color: #009EF3');
+    });
+  });
 });
