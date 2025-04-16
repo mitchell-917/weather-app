@@ -24,8 +24,6 @@ export const Weather = () => {
       setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
       setCurrentWindSpeed(data.wind.speed);
       setCurrentHumidity(data.main.humidity);
-      console.log(currentWindSpeed);
-      console.log(data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
