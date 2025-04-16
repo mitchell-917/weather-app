@@ -4,6 +4,14 @@ import CurrentWeather from './components/currentWeather.jsx';
 import Search from './components/search.jsx';
 
 describe('Weather App', () => {
+  beforeEach(() => {
+    global.fetch = jest.fn();
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   test('it displays the weather forecast for a given city', () => {
     render(<Weather />);
 
@@ -50,5 +58,25 @@ describe('Weather App', () => {
     render(<Weather />);
     expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
     expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', 'Enter city name');
+  });
+
+  test('fetches and displays weather data successfully', async () => {
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        main: { temp: 293.15, humidity: 50 },
+        name: 'Paris',
+        weather: [{ icon: '01d' }],
+        wind: { speed: 5 },
+      }),
+    });
+
+    render(<Weather />);
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining('https://api.openweathermap.org/data/2.5/weather')
+    );
+
+    expect(await screen.findByText('Paris')).toBeInTheDocument();
+    expect(await screen.findByText('20.0°')).toBeInTheDocument();
   });
 });
