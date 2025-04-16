@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Weather from './components/weather.jsx';
 import CurrentWeather from './components/currentWeather.jsx';
+import Search from './components/search.jsx';
 
 describe('Weather App', () => {
   test('it displays the weather forecast for a given city', () => {
@@ -44,5 +45,10 @@ describe('Weather App', () => {
     expect(screen.getByText('Wind')).toBeInTheDocument();
     expect(screen.getByText('10 km/h')).toBeInTheDocument();
   });
-});
 
+  test('renders accessible elements', () => {
+    render(<Weather />);
+    expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', 'Enter city name');
+  });
+});
