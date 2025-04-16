@@ -1,9 +1,24 @@
-export const Search = () => {
+import React, { useState } from 'react';
+
+export const Search = ({ onSearch }) => {
+  const [city, setCity] = useState('London');
+
+  const handleSearch = () => {
+    if (city.trim()) {
+      onSearch(city);
+    }
+  };
+
   return (
-      <div className='search-bar'>
-        <input type='text' placeholder='Enter city name'/>
-        <button>Search</button>
-      </div>
+    <div className='search-bar'>
+      <input
+        type='text'
+        placeholder='Enter city name'
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+      />
+      <button onClick={handleSearch}>Search</button>
+    </div>
   );
 };
 

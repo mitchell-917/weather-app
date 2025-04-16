@@ -1,4 +1,3 @@
-import City from './city';
 import Temperature from './temperature';
 
 const weatherIcons = {
@@ -11,14 +10,14 @@ const weatherIcons = {
 
 const getWeatherIcon = (currentWeather) => weatherIcons[currentWeather] || weatherIcons.Default;
 
-export const CurrentWeather = ({ currentWeather, temperature }) => {
+export const CurrentWeather = ({ city, currentWeather, temperature }) => {
   return (
     <div className="current-weather">
       <img className="weather-icon" src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
-      <City className="city" />
+      <div className="city">{city}</div>
       <Temperature className="temperature" temperature={temperature} />
     </div>
   );
-}
+};
 
 export default CurrentWeather;
