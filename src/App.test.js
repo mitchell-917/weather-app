@@ -80,6 +80,24 @@ describe('Weather App', () => {
     expect(await screen.findByText('20.0°')).toBeInTheDocument();
   });
 
+  test('updates state with new weather data', async () => {
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        main: { temp: 300.15, humidity: 60 },
+        name: 'Tokyo',
+        weather: [{ icon: '02d' }],
+        wind: { speed: 8 },
+      }),
+    });
+
+    render(<Weather />);
+    expect(await screen.findByText('Tokyo')).toBeInTheDocument();
+    expect(await screen.findByText('27.0°')).toBeInTheDocument();
+    expect(await screen.findByText('60%')).toBeInTheDocument();
+    expect(await screen.findByText('8 km/h')).toBeInTheDocument();
+  });
+
   test('calls onSearch with the correct city name', () => {
     const mockOnSearch = jest.fn();
     render(<Search onSearch={mockOnSearch} />);
