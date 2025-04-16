@@ -58,7 +58,6 @@ describe('Weather App', () => {
     });
   });
 
-  // Section: Accessibility
   describe('Accessibility', () => {
     test('renders accessible elements', () => {
       render(<Weather />);
@@ -150,6 +149,18 @@ describe('Weather App', () => {
 
       const weatherApp = await screen.findByRole('main');
       expect(weatherApp).toHaveStyle('background-color: #009EF3');
+    });
+  });
+
+  describe('Map Functionality', () => {
+    test('renders the map component with a marker', () => {
+      render(<Weather />);
+
+      const mapContainer = document.querySelector('.map-container');
+      expect(mapContainer).toBeInTheDocument();
+
+      const marker = document.querySelector('.leaflet-marker-icon');
+      expect(marker).toBeInTheDocument();
     });
   });
 });

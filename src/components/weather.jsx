@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import './weather.css';
 import Search from './search';
 import Humidity from './humidity';
@@ -12,10 +14,18 @@ export const Weather = () => {
   const [currentWindSpeed, setCurrentWindSpeed] = useState('10');
   const [currentHumidity, setCurrentHumidity] = useState('20');
   const [backgroundColor, setBackgroundColor] = useState('#009ef3');
+  const [coordinates, setCoordinates] = useState([51.5074, -0.1278]);
 
-  const search = async (city) => {
+  const search = async (cityOrCoords) => {
     const apiKey = process.env.REACT_APP_API_KEY;
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    let apiUrl;
+
+    if (typeof cityOrCoords === 'string') {
+      apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityOrCoords}&appid=${apiKey}`;
+    } else {
+      const [lat, lon] = cityOrCoords;
+      apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    }
 
     try {
       const response = await fetch(apiUrl);
@@ -39,6 +49,7 @@ export const Weather = () => {
     setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
     setCurrentWindSpeed(data.wind.speed);
     setCurrentHumidity(data.main.humidity);
+    setCoordinates([data.coord.lat, data.coord.lon]);
   };
 
   const updateBackgroundColor = (data) => {
@@ -58,27 +69,50 @@ export const Weather = () => {
     }
   };
 
+  const MapClickHandler = () => {
+    useMapEvents({
+      click: (e) => {
+        const { lat, lng } = e.latlng;
+        search([lat, lng]);
+      },
+    });
+    return null;
+  };
+
   useEffect(() => {
     search(city);
   }, []);
 
   return (
-  <div className='weather-app' style={{ backgroundColor }} role="main">
-    <div className='weather' >
-      <div className='weather-container'>
-        <Search onSearch={search} />
-        <CurrentWeather city={city} temperature={temperature} weatherIcon={currentWeather} />
-        <div className='weather-data'>
-          <div className='col'>
-            <Humidity currentHumidity={currentHumidity} />
+    <div className='weather-app' style={{ backgroundColor }} role="main">
+      <div className='weather'>
+        <div className='weather-container'>
+          <Search onSearch={search} />
+          <CurrentWeather city={city} temperature={temperature} weatherIcon={currentWeather} />
+          <div className='weather-data'>
+            <div className='col'>
+              <Humidity currentHumidity={currentHumidity} />
+            </div>
+            <div className='col'>
+              <Wind currentWindSpeed={currentWindSpeed} />
+            </div>
           </div>
-          <div className='col'>
-            <Wind currentWindSpeed={currentWindSpeed}/>
+          <div className='map-container'>
+              <MapContainer
+                center={coordinates}
+                zoom={5}
+                style={{ height: '200px', width: '100%' }}
+              >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={coordinates} data-testid={"marker"} />
+              <MapClickHandler />
+            </MapContainer>
           </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 
