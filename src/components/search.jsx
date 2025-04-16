@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const Search = ({ onSearch }) => {
-  const [city, setCity] = useState('London');
+  const [city, setCity] = useState('');
 
   const handleSearch = () => {
     if (city.trim()) {
