@@ -8,7 +8,7 @@ import CurrentWeather from './currentWeather';
 export const Weather = () => {
   const [temperature, setTemperature] = useState(20);
   const [city, setCity] = useState('London');
-  const [currentWeather, setCurrentWeather] = useState('Clear');
+  const [currentWeather, setCurrentWeatherIcon] = useState('03d');
 
   const search = async (city) => {
     try {
@@ -19,7 +19,7 @@ export const Weather = () => {
       const tempInCelsius = data.main.temp - 273.15;
       setTemperature(tempInCelsius.toFixed(1));
       setCity(data.name);
-      setCurrentWeather(data.weather[0]);
+      setCurrentWeatherIcon(data.weather[0].icon);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -33,7 +33,7 @@ export const Weather = () => {
     <div className='weather'>
       <div className='weather-container'>
         <Search onSearch={search} />
-        <CurrentWeather city={city} temperature={temperature} currentWeather={currentWeather} weatherIcon={"03d"} />
+        <CurrentWeather city={city} temperature={temperature} currentWeather={currentWeather} weatherIcon={currentWeather} />
         <div className='weather-data'>
           <div className='col'>
             <Humidity />
