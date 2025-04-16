@@ -79,4 +79,17 @@ describe('Weather App', () => {
     expect(await screen.findByText('Paris')).toBeInTheDocument();
     expect(await screen.findByText('20.0°')).toBeInTheDocument();
   });
+
+  test('calls onSearch with the correct city name', () => {
+    const mockOnSearch = jest.fn();
+    render(<Search onSearch={mockOnSearch} />);
+
+    const input = screen.getByPlaceholderText('Enter city name');
+    fireEvent.change(input, { target: { value: 'Berlin' } });
+
+    const button = screen.getByText('Search');
+    fireEvent.click(button);
+
+    expect(mockOnSearch).toHaveBeenCalledWith('Berlin');
+  });
 });
