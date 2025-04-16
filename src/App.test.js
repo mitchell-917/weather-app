@@ -29,7 +29,7 @@ describe('Weather App', () => {
   });
 
     const weatherIcon = [
-      "03d",
+      "https://openweathermap.org/img/wn/03d@2x.png",
     ];
 
   weatherIcon.forEach((icon) => {
@@ -38,7 +38,7 @@ describe('Weather App', () => {
 
       const currentWeatherImage = screen.getByTestId('current-weather-icon');
       expect(currentWeatherImage).toBeInTheDocument();
-      expect(currentWeatherImage.getAttribute('src')).toBe(`https://openweathermap.org/img/wn/${icon}@2x.png`);
+      expect(currentWeatherImage.getAttribute('src')).toBe(icon);
     });
   });
 

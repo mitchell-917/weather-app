@@ -19,7 +19,7 @@ export const Weather = () => {
       const tempInCelsius = data.main.temp - 273.15;
       setTemperature(tempInCelsius.toFixed(1));
       setCity(data.name);
-      setCurrentWeatherIcon(data.weather[0].icon);
+      setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
