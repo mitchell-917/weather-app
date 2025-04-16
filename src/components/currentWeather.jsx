@@ -14,7 +14,7 @@ export const CurrentWeather = ({ city, currentWeather, temperature, weatherIcon 
   return (
     <div className="current-weather">
       <img className="weather-icon" src={getWeatherIcon(currentWeather)} alt='weather icon' data-testid="current-weather"/>
-      <img className="weather-icon" src={weatherIcon} alt='weather icon' data-testid="current-weather-icon"/>
+      <img className="weather-icon" src={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`} alt='weather icon' data-testid="current-weather-icon"/>
       <div className="city">{city}</div>
       <Temperature className="temperature" temperature={temperature} />
     </div>

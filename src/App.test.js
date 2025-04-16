@@ -28,12 +28,18 @@ describe('Weather App', () => {
     });
   });
 
+    const weatherIcon = [
+      "03d",
+    ];
 
-  test("it displays the weather icons correctly for a given city", () => {
-    render(<CurrentWeather weatherIcon={"03d"} />);
+  weatherIcon.forEach((icon, expectedSrc) => {
+    test("it displays the weather icons correctly for a given city", () => {
+      render(<CurrentWeather weatherIcon={icon} />);
 
-    const currentWeatherImage = screen.getByTestId('current-weather-icon');
-    expect(currentWeatherImage).toBeInTheDocument();
+      const currentWeatherImage = screen.getByTestId('current-weather-icon');
+      expect(currentWeatherImage).toBeInTheDocument();
+      expect(currentWeatherImage.getAttribute('src')).toBe(`https://openweathermap.org/img/wn/${icon}@2x.png`);
+    });
   });
 
   test('it displays the humidity information', () => {
