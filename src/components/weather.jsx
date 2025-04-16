@@ -12,22 +12,31 @@ export const Weather = () => {
   const [currentWindSpeed, setCurrentWindSpeed] = useState('10');
   const [currentHumidity, setCurrentHumidity] = useState('20');
 
-  const search = async (city) => {
-    try {
-      const apiKey = process.env.REACT_APP_API_KEY;
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
-      const data = await response.json();
+const search = async (city) => {
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
-      const tempInCelsius = data.main.temp - 273.15;
-      setTemperature(tempInCelsius.toFixed(1));
-      setCity(data.name);
-      setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-      setCurrentWindSpeed(data.wind.speed);
-      setCurrentHumidity(data.main.humidity);
-    } catch (error) {
-      console.error('Error fetching weather data:', error);
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
-  };
+
+    const data = await response.json();
+    updateWeatherData(data);
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+  }
+};
+
+const updateWeatherData = (data) => {
+  const tempInCelsius = (data.main.temp - 273.15).toFixed(1);
+  setTemperature(tempInCelsius);
+  setCity(data.name);
+  setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+  setCurrentWindSpeed(data.wind.speed);
+  setCurrentHumidity(data.main.humidity);
+};
 
   useEffect(() => {
     search(city);
