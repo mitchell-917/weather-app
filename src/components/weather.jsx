@@ -9,6 +9,8 @@ export const Weather = () => {
   const [temperature, setTemperature] = useState(20);
   const [city, setCity] = useState('London');
   const [currentWeather, setCurrentWeatherIcon] = useState('03d');
+  const [currentWindSpeed, setCurrentWindSpeed] = useState('10');
+  const [currentHumidity, setCurrentHumidity] = useState('20');
 
   const search = async (city) => {
     try {
@@ -20,6 +22,10 @@ export const Weather = () => {
       setTemperature(tempInCelsius.toFixed(1));
       setCity(data.name);
       setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+      setCurrentWindSpeed(data.wind.speed);
+      setCurrentHumidity(data.main.humidity);
+
+      console.log(data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -36,7 +42,7 @@ export const Weather = () => {
         <CurrentWeather city={city} temperature={temperature} weatherIcon={currentWeather} />
         <div className='weather-data'>
           <div className='col'>
-            <Humidity />
+            <Humidity humidity={currentHumidity} />
           </div>
           <div className='col'>
             <Wind />
