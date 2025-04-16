@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './weather.css';
 import Search from './search';
@@ -36,6 +36,7 @@ export const Weather = () => {
       const data = await response.json();
       console.log(data);
       updateWeatherData(data);
+      setCoordinates([data.coord.lat, data.coord.lon]);
       updateBackgroundColor(data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
@@ -79,6 +80,16 @@ export const Weather = () => {
     return null;
   };
 
+  const MapUpdater = ({ coordinates }) => {
+    const map = useMap();
+
+    useEffect(() => {
+      map.setView(coordinates, map.getZoom());
+    }, [coordinates, map]);
+
+    return null;
+  };
+
   useEffect(() => {
     search(city);
   }, []);
@@ -98,16 +109,17 @@ export const Weather = () => {
             </div>
           </div>
           <div className='map-container'>
-              <MapContainer
-                center={coordinates}
-                zoom={5}
-                style={{ height: '200px', width: '100%' }}
-              >
+            <MapContainer
+              center={coordinates}
+              zoom={5}
+              style={{ height: '200px', width: '100%' }}
+            >
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker position={coordinates} data-testid={"marker"} />
+              <Marker position={coordinates} />
               <MapClickHandler />
+              <MapUpdater coordinates={coordinates} />
             </MapContainer>
           </div>
         </div>
