@@ -1,7 +1,7 @@
-export const City = () => {
+export const City = ({ city }) => {
   return (
     <div className='city'>
-      <h1>London</h1>
+      <h1>{city}</h1>
     </div>
   );
 }
