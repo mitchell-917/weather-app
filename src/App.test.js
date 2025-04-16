@@ -3,34 +3,17 @@ import Weather from './components/weather.jsx';
 import CurrentWeather from './components/currentWeather.jsx';
 
 describe('Weather App', () => {
-  test('it displays the weather forecast for a given city', () => {
+  test('it displays the weather image forecast for a given city', () => {
     render(<Weather />);
 
     expect(screen.getByText('London')).toBeInTheDocument();
     expect(screen.getByText('20°')).toBeInTheDocument();
-    expect(screen.getByTestId('current-weather')).toBeInTheDocument();
+    expect(screen.getByTestId('current-weather-icon')).toBeInTheDocument();
   });
 
-  const weatherTestCases = [
-    { currentWeather: 'Clear', expectedSrc: '/assets/clear.png' },
-    { currentWeather: 'Cloudy', expectedSrc: '/assets/cloud.png' },
-    { currentWeather: 'Rainy', expectedSrc: '/assets/rain.png' },
-    { currentWeather: 'Snowy', expectedSrc: '/assets/snow.png' },
+  const weatherIcon = [
+    "https://openweathermap.org/img/wn/03d@2x.png",
   ];
-
-  weatherTestCases.forEach(({ currentWeather, expectedSrc }) => {
-    test(`renders ${currentWeather.toLowerCase()} weather image`, () => {
-      render(<CurrentWeather currentWeather={currentWeather} />);
-
-      const currentWeatherImage = screen.getByTestId('current-weather');
-      expect(currentWeatherImage).toBeInTheDocument();
-      expect(currentWeatherImage.getAttribute('src')).toBe(expectedSrc);
-    });
-  });
-
-    const weatherIcon = [
-      "https://openweathermap.org/img/wn/03d@2x.png",
-    ];
 
   weatherIcon.forEach((icon) => {
     test("it displays the weather icons correctly for a given city", () => {

@@ -33,7 +33,7 @@ export const Weather = () => {
     <div className='weather'>
       <div className='weather-container'>
         <Search onSearch={search} />
-        <CurrentWeather city={city} temperature={temperature} currentWeather={currentWeather} weatherIcon={currentWeather} />
+        <CurrentWeather city={city} temperature={temperature} weatherIcon={currentWeather} />
         <div className='weather-data'>
           <div className='col'>
             <Humidity />
