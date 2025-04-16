@@ -32,7 +32,7 @@ describe('Weather App', () => {
       "03d",
     ];
 
-  weatherIcon.forEach((icon, expectedSrc) => {
+  weatherIcon.forEach((icon) => {
     test("it displays the weather icons correctly for a given city", () => {
       render(<CurrentWeather weatherIcon={icon} />);
 
