@@ -19,7 +19,7 @@ export const Weather = () => {
       const tempInCelsius = data.main.temp - 273.15;
       setTemperature(tempInCelsius.toFixed(1));
       setCity(data.name);
-      setCurrentWeather(data.weather[0].main);
+      setCurrentWeather(data.weather[0]);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -33,7 +33,7 @@ export const Weather = () => {
     <div className='weather'>
       <div className='weather-container'>
         <Search onSearch={search} />
-        <CurrentWeather city={city} temperature={temperature} currentWeather={currentWeather} />
+        <CurrentWeather city={city} temperature={temperature} currentWeather={currentWeather} weatherIcon={"03d"} />
         <div className='weather-data'>
           <div className='col'>
             <Humidity />

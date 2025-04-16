@@ -28,6 +28,14 @@ describe('Weather App', () => {
     });
   });
 
+
+  test("it displays the weather icons correctly for a given city", () => {
+    render(<CurrentWeather weatherIcon={"03d"} />);
+
+    const currentWeatherImage = screen.getByTestId('current-weather-icon');
+    expect(currentWeatherImage).toBeInTheDocument();
+  });
+
   test('it displays the humidity information', () => {
     render(<Weather />);
 
