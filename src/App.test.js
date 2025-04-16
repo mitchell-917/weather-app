@@ -92,4 +92,14 @@ describe('Weather App', () => {
 
     expect(mockOnSearch).toHaveBeenCalledWith('Berlin');
   });
+
+  test('does not call onSearch with empty input', () => {
+    const mockOnSearch = jest.fn();
+    render(<Search onSearch={mockOnSearch} />);
+
+    const button = screen.getByText('Search');
+    fireEvent.click(button);
+
+    expect(mockOnSearch).not.toHaveBeenCalled();
+  });
 });
