@@ -3,7 +3,7 @@ import Weather from './components/weather.jsx';
 import CurrentWeather from './components/currentWeather.jsx';
 
 describe('Weather App', () => {
-  test('it displays the weather image forecast for a given city', () => {
+  test('it displays the weather forecast for a given city', () => {
     render(<Weather />);
 
     expect(screen.getByText('London')).toBeInTheDocument();
