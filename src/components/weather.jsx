@@ -34,7 +34,6 @@ export const Weather = () => {
       }
 
       const data = await response.json();
-      console.log(data);
       updateWeatherData(data);
       setCoordinates([data.coord.lat, data.coord.lon]);
       updateBackgroundColor(data);
