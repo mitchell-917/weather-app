@@ -42,7 +42,19 @@ export const Weather = () => {
     }
   };
 
-  const weatherReportFor = async (cityOrCoords) => {};
+  const weatherUrlFor = (cityOrCoords) => {
+    const apiKey = process.env.REACT_APP_API_KEY;
+    let apiUrl;
+
+    if (typeof cityOrCoords === 'string') {
+      apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityOrCoords}&appid=${apiKey}`;
+    } else {
+      const [lat, lon] = cityOrCoords;
+      apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    }
+
+    return apiUrl;
+  };
 
   const updateWeatherData = (data) => {
     const tempInCelsius = (data.main.temp - 273.15).toFixed(1);
