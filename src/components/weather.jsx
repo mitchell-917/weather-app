@@ -26,7 +26,9 @@ export const Weather = () => {
       const weatherReport = await response.json();
       displayCurrentWeather(weatherReport);
       displayTimeOfDay(weatherReport);
-      setCoordinates([weatherReport.coord.lat, weatherReport.coord.lon]);
+
+      const currentCoordinates = weatherReport.coord;
+      setCoordinates([currentCoordinates.lat, currentCoordinates.lon]);
 
     } catch (error) {
       console.error('Error fetching weather data:', error);
