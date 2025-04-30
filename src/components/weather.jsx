@@ -23,10 +23,10 @@ export const Weather = () => {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
 
-      const data = await response.json();
-      updateWeatherData(data);
-      setCoordinates([data.coord.lat, data.coord.lon]);
-      updateBackgroundColor(data);
+      const weatherReport = await response.json();
+      updateWeatherData(weatherReport);
+      setCoordinates([weatherReport.coord.lat, weatherReport.coord.lon]);
+      updateBackgroundColor(weatherReport);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -45,6 +45,7 @@ export const Weather = () => {
 
     return apiUrl;
   };
+
 
   const updateWeatherData = (data) => {
     const tempInCelsius = (data.main.temp - 273.15).toFixed(1);
