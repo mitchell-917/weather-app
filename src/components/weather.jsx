@@ -42,28 +42,7 @@ export const Weather = () => {
     }
   };
 
-  const weatherReportFor = async (cityOrCoords) => {
-    const apiKey = process.env.REACT_APP_API_KEY;
-    let apiUrl;
-
-    if (typeof cityOrCoords === 'string') {
-      apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityOrCoords}&appid=${apiKey}`;
-    } else {
-      const [lat, lon] = cityOrCoords;
-      apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-    }
-
-    try {
-      const response = await fetch(apiUrl);
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
-      }
-
-      const data = await response.json();
-    } catch (error) {
-      console.error('Error fetching weather data:', error);
-    }
-  };
+  const weatherReportFor = async (cityOrCoords) => {};
 
   const updateWeatherData = (data) => {
     const tempInCelsius = (data.main.temp - 273.15).toFixed(1);
