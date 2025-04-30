@@ -24,7 +24,7 @@ export const Weather = () => {
       }
 
       const weatherReport = await response.json();
-      updateWeatherData(weatherReport);
+      displayCurrentWeather(weatherReport);
       displayTimeOfDay(weatherReport);
       setCoordinates([weatherReport.coord.lat, weatherReport.coord.lon]);
 
@@ -47,7 +47,7 @@ export const Weather = () => {
     return apiUrl;
   };
 
-  const updateWeatherData = (data) => {
+  const displayCurrentWeather = (data) => {
     const tempInCelsius = (data.main.temp - 273.15).toFixed(1);
     setTemperature(tempInCelsius);
     setCity(data.name);
