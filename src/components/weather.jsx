@@ -17,18 +17,8 @@ export const Weather = () => {
   const [coordinates, setCoordinates] = useState([51.5074, -0.1278]);
 
   const search = async (cityOrCoords) => {
-    const apiKey = process.env.REACT_APP_API_KEY;
-    let apiUrl;
-
-    if (typeof cityOrCoords === 'string') {
-      apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityOrCoords}&appid=${apiKey}`;
-    } else {
-      const [lat, lon] = cityOrCoords;
-      apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-    }
-
     try {
-      const response = await fetch(apiUrl);
+      const response = await fetch(weatherUrlFor(cityOrCoords));
       if (!response.ok) {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
