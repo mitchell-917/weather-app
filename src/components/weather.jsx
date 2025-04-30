@@ -25,8 +25,9 @@ export const Weather = () => {
 
       const weatherReport = await response.json();
       updateWeatherData(weatherReport);
-      setCoordinates([weatherReport.coord.lat, weatherReport.coord.lon]);
       updateBackgroundColor(weatherReport);
+      setCoordinates([weatherReport.coord.lat, weatherReport.coord.lon]);
+
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -45,7 +46,6 @@ export const Weather = () => {
 
     return apiUrl;
   };
-
 
   const updateWeatherData = (data) => {
     const tempInCelsius = (data.main.temp - 273.15).toFixed(1);
