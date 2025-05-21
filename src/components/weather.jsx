@@ -59,10 +59,10 @@ export const Weather = () => {
     setCoordinates([data.coord.lat, data.coord.lon]);
   };
 
-  const displayTimeOfDay = (data) => {
-    console.log('Data:', data);
-    const utcTime = data.dt;
-    const timezoneOffset = data.timezone;
+  const displayTimeOfDay = (weatherReportForLocation) => {
+    console.log('Data:', weatherReportForLocation);
+    const utcTime = weatherReportForLocation.dt;
+    const timezoneOffset = weatherReportForLocation.timezone;
     const localTime = new Date((utcTime + timezoneOffset) * 1000);
     const hours = localTime.getHours();
     const morning = (hours >= 6 && hours < 12);
