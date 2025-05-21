@@ -6,6 +6,7 @@ import Search from './search';
 import Humidity from './humidity';
 import Wind from './wind';
 import CurrentWeather from './currentWeather';
+import DisplayTimeOfDay from './weatherUtils';
 
 export const Weather = () => {
   const [temperature, setTemperature] = useState(20);
