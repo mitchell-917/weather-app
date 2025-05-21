@@ -49,14 +49,14 @@ export const Weather = () => {
     return apiUrl;
   };
 
-  const displayCurrentWeather = (data) => {
-    const tempInCelsius = (data.main.temp - 273.15).toFixed(1);
+  const displayCurrentWeather = (weatherReportForLocation) => {
+    const tempInCelsius = (weatherReportForLocation.main.temp - 273.15).toFixed(1);
     setTemperature(tempInCelsius);
-    setCity(data.name);
-    setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-    setCurrentWindSpeed(data.wind.speed);
-    setCurrentHumidity(data.main.humidity);
-    setCoordinates([data.coord.lat, data.coord.lon]);
+    setCity(weatherReportForLocation.name);
+    setCurrentWeatherIcon(`https://openweathermap.org/img/wn/${weatherReportForLocation.weather[0].icon}@2x.png`);
+    setCurrentWindSpeed(weatherReportForLocation.wind.speed);
+    setCurrentHumidity(weatherReportForLocation.main.humidity);
+    setCoordinates([weatherReportForLocation.coord.lat, weatherReportForLocation.coord.lon]);
   };
 
   const displayTimeOfDay = (weatherReportForLocation) => {
