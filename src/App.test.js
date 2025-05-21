@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Weather from './components/weather.jsx';
+import Weather, { localTimeHour } from './components/weather.jsx';
 import CurrentWeather from './components/currentWeather.jsx';
 import Search from './components/search.jsx';
 
@@ -161,6 +161,17 @@ describe('Weather App', () => {
 
       const marker = document.querySelector('.leaflet-marker-icon');
       expect(marker).toBeInTheDocument();
+    });
+  });
+
+  describe('localTimeHour Function', () => {
+    test('it converts UTC time to local time correctly', () => {
+      const utcTime = 1681656000;
+      const timezoneOffset = 3600;
+
+      const currentHour = localTimeHour(utcTime, timezoneOffset);
+
+      expect(currentHour).toEqual(16);
     });
   });
 });

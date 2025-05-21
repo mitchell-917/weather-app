@@ -7,6 +7,13 @@ import Humidity from './humidity';
 import Wind from './wind';
 import CurrentWeather from './currentWeather';
 
+
+export const localTimeHour = (utcTime, timezoneOffset) => {
+  const LocalTime = new Date((utcTime + timezoneOffset) * 1000);
+
+  return LocalTime.getHours();
+}
+
 export const Weather = () => {
   const [temperature, setTemperature] = useState(20);
   const [city, setCity] = useState('London');
@@ -60,7 +67,6 @@ export const Weather = () => {
   };
 
   const displayTimeOfDay = (weatherReportForLocation) => {
-    console.log('Data:', weatherReportForLocation);
     const utcTime = weatherReportForLocation.dt;
     const timezoneOffset = weatherReportForLocation.timezone;
     const localTime = new Date((utcTime + timezoneOffset) * 1000);
