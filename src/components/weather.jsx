@@ -67,10 +67,7 @@ export const Weather = () => {
   };
 
   const displayTimeOfDay = (weatherReportForLocation) => {
-    const utcTime = weatherReportForLocation.dt;
-    const timezoneOffset = weatherReportForLocation.timezone;
-    const localTime = new Date((utcTime + timezoneOffset) * 1000);
-    const hours = localTime.getHours();
+    const hours = localTimeHour(weatherReportForLocation.dt, weatherReportForLocation.timezone);
     const morning = (hours >= 6 && hours < 12);
     const afternoon = (hours >= 12 && hours < 18);
     const evening = (hours >= 18 && hours < 21);
