@@ -66,11 +66,12 @@ export const Weather = () => {
     const localTime = new Date((utcTime + timezoneOffset) * 1000);
     const hours = localTime.getHours();
     const morning = (hours >= 6 && hours < 12);
+    const afternoon = (hours >= 12 && hours < 18);
 
 
     if (morning) {
       setBackgroundColor('#FFD700');
-    } else if (hours >= 12 && hours < 18) {
+    } else if (afternoon) {
       setBackgroundColor('#009EF3');
     } else if (hours >= 18 && hours < 21) {
       setBackgroundColor('#FF8C00');
