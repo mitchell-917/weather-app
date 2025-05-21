@@ -6,7 +6,6 @@ import Search from './search';
 import Humidity from './humidity';
 import Wind from './wind';
 import CurrentWeather from './currentWeather';
-import DisplayTimeOfDay from './weatherUtils';
 
 export const Weather = () => {
   const [temperature, setTemperature] = useState(20);
@@ -61,6 +60,7 @@ export const Weather = () => {
   };
 
   const displayTimeOfDay = (data) => {
+    console.log('Data:', data);
     const utcTime = data.dt;
     const timezoneOffset = data.timezone;
     const localTime = new Date((utcTime + timezoneOffset) * 1000);
