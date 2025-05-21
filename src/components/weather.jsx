@@ -67,13 +67,14 @@ export const Weather = () => {
     const hours = localTime.getHours();
     const morning = (hours >= 6 && hours < 12);
     const afternoon = (hours >= 12 && hours < 18);
+    const evening = (hours >= 18 && hours < 21);
 
 
     if (morning) {
       setBackgroundColor('#FFD700');
     } else if (afternoon) {
       setBackgroundColor('#009EF3');
-    } else if (hours >= 18 && hours < 21) {
+    } else if (evening) {
       setBackgroundColor('#FF8C00');
     } else {
       setBackgroundColor('#2C3E50');
