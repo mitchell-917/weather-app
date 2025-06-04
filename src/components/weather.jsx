@@ -77,7 +77,8 @@ export const Weather = () => {
 
   const updateBackgroundColor = (hours) => {
     if (isMorning(hours)) {
-      setBackgroundColor('#FFD700');
+      timeOfDayBackgroundColor = '#FFD700';
+      setBackgroundColor(timeOfDayBackgroundColor);
     } else if (isAfternoon(hours)) {
       setBackgroundColor('#009EF3');
     } else if (isEvening(hours)) {
