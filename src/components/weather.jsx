@@ -75,13 +75,17 @@ export const Weather = () => {
   const isEvening = (hours) => hours >= 18 && hours < 21;
   const isNight = (hours) => !isMorning(hours) && !isAfternoon(hours) && !isEvening(hours);
 
-  const updateBackgroundColor = (hours) => {
+  const timeOfDayBackgroundColor = (hours) => {
     let timeOfDayBackgroundColor = '#FFFFFF';
     if (isMorning(hours)) timeOfDayBackgroundColor = '#FFD700';
     if (isAfternoon(hours)) timeOfDayBackgroundColor = '#009EF3'
     if (isEvening(hours)) timeOfDayBackgroundColor = '#FF8C00'
     if (isNight(hours)) timeOfDayBackgroundColor = '#2C3E50'
-    setBackgroundColor(timeOfDayBackgroundColor);
+    return timeOfDayBackgroundColor;
+  }
+
+  const updateBackgroundColor = (hours) => {
+    setBackgroundColor(timeOfDayBackgroundColor(hours));
   };
 
   const MapClickHandler = () => {
