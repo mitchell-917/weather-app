@@ -70,11 +70,6 @@ export const Weather = () => {
     updateBackgroundColor(hours);
   };
 
-  const isMorning = (hours) => hours >= 6 && hours < 12;
-  const isAfternoon = (hours) => hours >= 12 && hours < 18;
-  const isEvening = (hours) => hours >= 18 && hours < 21;
-  const isNight = (hours) => !isMorning(hours) && !isAfternoon(hours) && !isEvening(hours);
-
   const timeOfDayBackgroundColor = (hours) => {
     const isMorning = hours >= 6 && hours < 12;
     const isAfternoon = hours >= 12 && hours < 18;
