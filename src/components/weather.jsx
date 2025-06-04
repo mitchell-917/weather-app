@@ -66,23 +66,29 @@ export const Weather = () => {
     setCoordinates([weatherReportForLocation.coord.lat, weatherReportForLocation.coord.lon]);
   };
 
+
+  const isMorning = (hours) => hours >= 6 && hours < 12;
+  const isAfternoon = (hours) => hours >= 12 && hours < 18;
+  const isEvening = (hours) => hours >= 18 && hours < 21;
+  const isNight = (hours) => !isMorning(hours) && !isAfternoon(hours) && !isEvening(hours);
+
   const displayTimeOfDay = (weatherReportForLocation) => {
     const hours = localTimeHour(weatherReportForLocation.dt, weatherReportForLocation.timezone);
-    const morning = (hours >= 6 && hours < 12);
-    const afternoon = (hours >= 12 && hours < 18);
-    const evening = (hours >= 18 && hours < 21);
+    updateBackgroundColor(hours);
+  };
 
-
-    if (morning) {
+  const updateBackgroundColor = (hours) => {
+    if (isMorning(hours)) {
       setBackgroundColor('#FFD700');
-    } else if (afternoon) {
+    } else if (isAfternoon(hours)) {
       setBackgroundColor('#009EF3');
-    } else if (evening) {
+    } else if (isEvening(hours)) {
       setBackgroundColor('#FF8C00');
-    } else {
+    } else if (isNight(hours)) {
       setBackgroundColor('#2C3E50');
     }
   };
+
 
   const MapClickHandler = () => {
     useMapEvents({
