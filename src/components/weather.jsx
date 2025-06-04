@@ -7,7 +7,6 @@ import Humidity from './humidity';
 import Wind from './wind';
 import CurrentWeather from './currentWeather';
 
-
 export const localTimeHour = (utcTime, timezoneOffset) => {
   const LocalTime = new Date((utcTime + timezoneOffset) * 1000);
 
@@ -66,7 +65,6 @@ export const Weather = () => {
     setCoordinates([weatherReportForLocation.coord.lat, weatherReportForLocation.coord.lon]);
   };
 
-
   const isMorning = (hours) => hours >= 6 && hours < 12;
   const isAfternoon = (hours) => hours >= 12 && hours < 18;
   const isEvening = (hours) => hours >= 18 && hours < 21;
@@ -88,7 +86,6 @@ export const Weather = () => {
       setBackgroundColor('#2C3E50');
     }
   };
-
 
   const MapClickHandler = () => {
     useMapEvents({
