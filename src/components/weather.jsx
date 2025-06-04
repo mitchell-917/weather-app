@@ -65,15 +65,15 @@ export const Weather = () => {
     setCoordinates([weatherReportForLocation.coord.lat, weatherReportForLocation.coord.lon]);
   };
 
-  const isMorning = (hours) => hours >= 6 && hours < 12;
-  const isAfternoon = (hours) => hours >= 12 && hours < 18;
-  const isEvening = (hours) => hours >= 18 && hours < 21;
-  const isNight = (hours) => !isMorning(hours) && !isAfternoon(hours) && !isEvening(hours);
-
   const displayTimeOfDay = (weatherReportForLocation) => {
     const hours = localTimeHour(weatherReportForLocation.dt, weatherReportForLocation.timezone);
     updateBackgroundColor(hours);
   };
+
+  const isMorning = (hours) => hours >= 6 && hours < 12;
+  const isAfternoon = (hours) => hours >= 12 && hours < 18;
+  const isEvening = (hours) => hours >= 18 && hours < 21;
+  const isNight = (hours) => !isMorning(hours) && !isAfternoon(hours) && !isEvening(hours);
 
   const updateBackgroundColor = (hours) => {
     if (isMorning(hours)) {
