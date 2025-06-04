@@ -80,7 +80,8 @@ export const Weather = () => {
       timeOfDayBackgroundColor = '#FFD700';
       setBackgroundColor(timeOfDayBackgroundColor);
     } else if (isAfternoon(hours)) {
-      setBackgroundColor('#009EF3');
+      timeOfDayBackgroundColor = '#009EF3'
+      setBackgroundColor(timeOfDayBackgroundColor);
     } else if (isEvening(hours)) {
       setBackgroundColor('#FF8C00');
     } else if (isNight(hours)) {
