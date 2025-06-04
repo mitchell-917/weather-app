@@ -76,11 +76,16 @@ export const Weather = () => {
   const isNight = (hours) => !isMorning(hours) && !isAfternoon(hours) && !isEvening(hours);
 
   const timeOfDayBackgroundColor = (hours) => {
+    const isMorning = hours >= 6 && hours < 12;
+    const isAfternoon = hours >= 12 && hours < 18;
+    const isEvening =  hours >= 18 && hours < 21;
+    const isNight = !isMorning(hours) && !isAfternoon(hours) && !isEvening(hours);
+
     let timeOfDayBackgroundColor = '#FFFFFF';
-    if (isMorning(hours)) timeOfDayBackgroundColor = '#FFD700';
-    if (isAfternoon(hours)) timeOfDayBackgroundColor = '#009EF3'
-    if (isEvening(hours)) timeOfDayBackgroundColor = '#FF8C00'
-    if (isNight(hours)) timeOfDayBackgroundColor = '#2C3E50'
+    if (isMorning) timeOfDayBackgroundColor = '#FFD700';
+    if (isAfternoon) timeOfDayBackgroundColor = '#009EF3'
+    if (isEvening) timeOfDayBackgroundColor = '#FF8C00'
+    if (isNight) timeOfDayBackgroundColor = '#2C3E50'
     return timeOfDayBackgroundColor;
   }
 
