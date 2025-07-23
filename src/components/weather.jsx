@@ -110,7 +110,7 @@ export const Weather = () => {
 
   useEffect(() => {
     search(city);
-  }, []);
+  }, [search, city]);
 
   return (
     <div className='weather-app' style={{ backgroundColor }} role="main">
